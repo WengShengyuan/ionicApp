@@ -1,0 +1,24 @@
+<ion-view view-title="{{apititle}}">
+  <ion-content>
+  	<!-- camera -->
+  	<div  ng-show="{{showCamera}}">
+	  	<div class="card">
+	  		<div class="item item-divider">
+	  			take a picture
+	  		</div>
+	  		<div class="item item-image">
+	  			<img class="item" ng-src="{{cameraimage}}" style="height:300px;" />
+	  		</div>
+	  	</div>
+	  	
+	  	<div class="padding">
+	  		<button class="button button-block buton-positive" ng-click="takePicture()">Take Photo</button>
+	  	</div>
+  	</div>
+  	
+  	<!-- barcode -->
+  	<div  ng-show="{{showBarcode}}">
+  		<button class="button" ng-click="scanBarcode()">Scan</button>
+  	</div>
+  </ion-content>
+</ion-view>

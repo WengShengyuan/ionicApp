@@ -72,32 +72,52 @@ angular.module('starter.controllers', ['ngCordova'])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 })
 
-.controller('APITESTSCtrl', function($scope) {
+.controller('apilistCtrl', function($scope) {
 	$scope.tests = [
-	  {title:'Camera', id:1}
+	  {title: 'camera', id:1},
+	  {title: 'barcode', id:2}
 	];
 })
 
-.controller('APITESTCtrl', function($scope, $stateParams, $cordovaCamera) {
-//	alert($stateParams.testId);
-//	$ionicPlatform.ready(function(){
-//		
-//		
-//	});
-	$scope.takePicture = function(){
-		console.log('creating options');
-		var options = {
-				quality: 50,
-				destinationType: Camera.DestinationType.DATA_URL,
-				sourceType: Camera.PictureSourceType.CAMERA
+
+
+.controller('apiCtrl', function($scope, $stateParams, $cordovaCamera, $cordovaBarcodeScanner) {
+	//camera
+	if($stateParams.apiId == 1){
+		$scope.showCamera = true;
+		$scope.apititle = "camera API";
+		
+		$scope.takePicture = function(){
+			var options = {
+					quality: 50,
+					destinationType: Camera.DestinationType.DATA_URL,
+					sourceType: Camera.PictureSourceType.CAMERA
+			};
+			$cordovaCamera.getPicture(options).then(function (imageData){
+				$scope.cameraimage = "data:image/jpeg;base64,"+imageData;
+			}, function (err){
+				console.log('faled: '+err);
+			});
 		};
-		console.log('created options');
-		$cordovaCamera.getPicture(options).then(function (imageData){
-			$scope.cameraimage = "data:image/jpeg;base64,"+imageData;
-		}, function (err){
-			console.log('faled: '+err);
-		});
-	};
+		
+	}
+	
+	//barcode
+	if($stateParams.apiId == 2){
+		$scope.showBarcode = true;
+		$scope.apititle = "barcode API";
+		
+		$scope.scanBarcode = function() {
+		    $cordovaBarcodeScanner.scan().then(function(imageData) {
+		        alert(imageData.text);
+		        console.log("Barcode Format -> " + imageData.format);
+		        console.log("Cancelled -> " + imageData.cancelled);
+		    }, function(error) {
+		        console.log("An error happened -> " + error);
+		    });
+		};
+	}
 })
+
 ;
 

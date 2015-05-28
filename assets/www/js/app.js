@@ -39,25 +39,29 @@ angular.module('starter', ['ionic','ngCordova','starter.controllers', 'starter.s
     }
   })
 
-  .state('app.APITESTS', {
-    url: "/APITESTS",
+  .state('app.apilists', {
+    url: "/apilists",
     views: {
       'menuContent': {
-        templateUrl: "templates/APITESTS.html",
-        controller: 'APITESTSCtrl'
+        templateUrl: "templates/apitests.html",
+        controller: 'apilistCtrl'
       }
     }
   })
   
-  .state('app.APITEST', {
-    url: "/APITESTS/:testId",
+
+  
+  .state('app.api', {
+    url: "/apilists/:apiId",
     views: {
       'menuContent': {
-        templateUrl: "templates/APITEST.html",
-        controller: 'APITESTCtrl'
+        templateUrl: "templates/api.html",
+        controller: 'apiCtrl'
       }
     }
   })
+  
+
 
   
     .state('app.playlists', {

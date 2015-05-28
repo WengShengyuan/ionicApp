@@ -46,6 +46,13 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/com.phonegap.plugins.barcodescanner/www/barcodescanner.js",
+        "id": "com.phonegap.plugins.barcodescanner.BarcodeScanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -55,7 +62,8 @@ module.exports.metadata =
     "cordova-plugin-device": "1.0.0",
     "cordova-plugin-splashscreen": "2.0.0",
     "cordova-plugin-whitelist": "1.0.0",
-    "cordova-plugin-camera": "1.1.0"
+    "cordova-plugin-camera": "1.1.0",
+    "com.phonegap.plugins.barcodescanner": "2.2.0"
 }
 // BOTTOM OF METADATA
 });
