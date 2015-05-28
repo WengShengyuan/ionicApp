@@ -1,32 +1,7 @@
 angular.module('starter.controllers', [])
 
-.service('userService', function(){
-	this.initParam = function(){
-		$scope.loginFlag = false;
-		$scope.userName = "";
-		$scope.gender = "";
-	};
-	this.login = function(loginName, password, $scope){
-		console.log('loginName: '+loginName + '; password: '+password);
-		if(loginName == 'user' && password == 'pass'){
-			$scope.userName = "嗡汤圆";
-			$scope.gender = "男";
-			$scope.loginFlag = true;
-			return true;
-		} else {
-			return false;
-		}
-	};
-})
 
-
-.service('messageService', function(){
-	this.alert = function(message){
-		alert(message);
-	}
-})
-
-.controller('AppCtrl', function($scope, $ionicModal, $http, userService , messageService) {
+.controller('AppCtrl', function($scope, $ionicModal, $http, userService, messageService) {
   
   // Form data for the login modal
   $scope.loginData = {};
@@ -47,7 +22,17 @@ angular.module('starter.controllers', [])
   $scope.login = function() {
     $scope.modal.show();
   };
-
+  
+  $scope.logout = function() {
+	 userService.logout($scope); 
+	 messageService.alert('登出成功');
+	 redirectTo: '/';
+  } ;
+  $scope.resetLoginParam = function() {
+	  $scope.loginData.username="";
+	  $scope.loginData.password="";
+	  $scope.closeLogin();
+  };
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);

@@ -1,7 +1,19 @@
-<ion-view view-title="MyProfile">
-  <ion-content>
-    <p>{{userName}} , 您好</p>
-	<p>您是一名{{gender}}性</p>
-  </ion-content>
+<ion-view view-title="MyProfile"> 
+	<ion-content>
+		<div class="card">
+			<div class="item item-divider">
+				<h3>个人信息</h3>
+			</div>
+			<div class="item item-text-wrap">
+				<p>头像占位</p>
+				<p>{{userName}} , 您好</p>
+				<p>您是一名{{gender}}性</p>
+			</div>
+			<div class="item item-divider">
+				<button class="button button-energized" ng-click="logout()">退出</button>
+			</div>
+		</div>
+		
+	</ion-content> 
 </ion-view>
 
