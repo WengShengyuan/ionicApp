@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
 
 .controller('AppCtrl', function($scope, $ionicModal, $http, userService, messageService) {
@@ -78,8 +78,26 @@ angular.module('starter.controllers', [])
 	];
 })
 
-.controller('APITESTCtrl', function($scope, $stateParams) {
+.controller('APITESTCtrl', function($scope, $stateParams, $cordovaCamera) {
 //	alert($stateParams.testId);
+//	$ionicPlatform.ready(function(){
+//		
+//		
+//	});
+	$scope.takePicture = function(){
+		console.log('creating options');
+		var options = {
+				quality: 50,
+				destinationType: Camera.DestinationType.DATA_URL,
+				sourceType: Camera.PictureSourceType.CAMERA
+		};
+		console.log('created options');
+		$cordovaCamera.getPicture(options).then(function (imageData){
+			$scope.cameraimage = "data:image/jpeg;base64,"+imageData;
+		}, function (err){
+			console.log('faled: '+err);
+		});
+	};
 })
 ;
 
