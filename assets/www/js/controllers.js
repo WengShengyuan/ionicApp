@@ -4,29 +4,42 @@ angular.module('starter.controllers', [])
 .controller('AppCtrl', function($scope, $ionicModal, $http, userService, messageService) {
   
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.loginData = {
+  };
   
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.loginmodal = modal;
+  });
+  $ionicModal.fromTemplateUrl('templates/myprofile.html', {
+	scope: $scope
+  }).then(function(modal) {
+	$scope.profilemodal = modal;
   });
 
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
-    $scope.modal.hide();
+    $scope.loginmodal.hide();
   };
+  $scope.closeprofile= function(){
+	  $scope.profilemodal.hide();
+  }
+  
 
   // Open the login modal
   $scope.login = function() {
-    $scope.modal.show();
+    $scope.loginmodal.show();
+  };
+  $scope.myprofile=function(){
+	$scope.profilemodal.show();  
   };
   
   $scope.logout = function() {
 	 userService.logout($scope); 
 	 messageService.alert('登出成功');
-	 redirectTo: '/';
+	 $scope.profilemodal.hide();
   } ;
   $scope.resetLoginParam = function() {
 	  $scope.loginData.username="";
@@ -38,7 +51,6 @@ angular.module('starter.controllers', [])
     console.log('Doing login', $scope.loginData);
     if(userService.login($scope.loginData.username, $scope.loginData.password, $scope)){
     	$scope.$apply();
-    	console.log('flag: '+$scope.loginFlag);
     	$scope.closeLogin();
     } else {
     	messageService.alert('用户名或者密码错误');
@@ -58,6 +70,16 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+})
 
+.controller('APITESTSCtrl', function($scope) {
+	$scope.tests = [
+	  {title:'Camera', id:1}
+	];
+})
+
+.controller('APITESTCtrl', function($scope, $stateParams) {
+//	alert($stateParams.testId);
+})
+;
 

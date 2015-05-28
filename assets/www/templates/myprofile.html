@@ -1,6 +1,12 @@
-<ion-view view-title="MyProfile"> 
-	<ion-content>
-		<div class="card">
+<ion-modal-view>
+<ion-header-bar>
+    <h1 class="title">Myprofile</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeprofile()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+  	<div class="card">
 			<div class="item item-divider">
 				<h3>个人信息</h3>
 			</div>
@@ -13,7 +19,6 @@
 				<button class="button button-energized" ng-click="logout()">退出</button>
 			</div>
 		</div>
-		
-	</ion-content> 
-</ion-view>
+  </ion-content>
+</ion-modal-view>
 
