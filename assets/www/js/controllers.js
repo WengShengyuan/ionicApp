@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $http, $cordovaDialogs, userService, messageService) {
+.controller('AppCtrl', function($scope, $ionicModal, $http,userService, messageService) {
   
   // Form data for the login modal
   $scope.loginData = {
@@ -38,7 +38,7 @@ angular.module('starter.controllers', ['ngCordova'])
   
   $scope.logout = function() {
 	 userService.logout($scope); 
-	 messageService.warning('登出成功');
+	 messageService.toast('登出成功');
 	 $scope.profilemodal.hide();
   } ;
   $scope.resetLoginParam = function() {

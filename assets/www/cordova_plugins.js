@@ -67,6 +67,17 @@ module.exports = [
         "merges": [
             "navigator.notification"
         ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.toast/www/Toast.js",
+        "id": "nl.x-services.plugins.toast.Toast",
+        "clobbers": [
+            "window.plugins.toast"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.toast/test/tests.js",
+        "id": "nl.x-services.plugins.toast.tests"
     }
 ];
 module.exports.metadata = 
@@ -78,7 +89,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.0.0",
     "cordova-plugin-camera": "1.1.0",
     "com.phonegap.plugins.barcodescanner": "2.2.0",
-    "cordova-plugin-dialogs": "1.1.0"
+    "cordova-plugin-dialogs": "1.1.0",
+    "nl.x-services.plugins.toast": "2.0.6"
 }
 // BOTTOM OF METADATA
 });

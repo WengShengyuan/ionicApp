@@ -25,11 +25,20 @@ angular.module('starter.services',[])
 })
 
 
-.service('messageService', function($cordovaDialogs){
+.service('messageService', function($cordovaDialogs, $cordovaToast){
 	this.warning = function(message){
 		$cordovaDialogs.alert(message, 'Warning','Confirm')
 			.then(function(){
-//				alert('Warning closed');
+			});
+	};
+	
+	this.toast = function(message){
+		$cordovaToast
+			.show(message, 'short', 'center')
+			.then(function(success){
+				//success
+			}, function (error){
+				//error
 			});
 	};
 	
