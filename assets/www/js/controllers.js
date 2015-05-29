@@ -82,7 +82,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 
 
-.controller('apiCtrl', function($scope, $stateParams, $cordovaCamera, $cordovaBarcodeScanner, $cordovaFile,  $cordovaFileTransfer, $timeout ,messageService) {
+.controller('apiCtrl', function($scope, $stateParams, $cordovaCamera, $cordovaBarcodeScanner, $cordovaFile,  $cordovaFileTransfer, $timeout , messageService) {
 	//camera
 	if($stateParams.apiId == 1){
 		$scope.showCamera = true;
@@ -237,9 +237,9 @@ angular.module('starter.controllers', ['ngCordova'])
 		$scope.download = function() {
 			var url = "http://yinyueshiting.baidu.com/data2/music/134367584/123107718108000128.mp3?xcode=94b81a0cc047ccd2b169a51e193c0fa9";
 		    var targetPath = cordova.file.externalDataDirectory + "centries.mp3";
-		    var trustHosts = true
+		    var trustHosts = true;
 		    var options = {};
-
+		    
 		    $cordovaFileTransfer.download(url, targetPath, options, trustHosts)
 		      .then(function(result) {
 		        // Success!
