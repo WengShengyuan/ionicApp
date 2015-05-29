@@ -17,8 +17,9 @@
   	</div>
   	
   	<!-- barcode -->
-  	<div  ng-show="{{showBarcode}}">
-  		<button class="button" ng-click="scanBarcode()">Scan</button>
+  	<div ng-show="{{showBarcode}}">
+  		<div>scann result : {{scanresult}}</div>
+  		<button class="button button-block button-positive" ng-click="scanBarcode()">Scan</button>
   	</div>
   </ion-content>
 </ion-view>

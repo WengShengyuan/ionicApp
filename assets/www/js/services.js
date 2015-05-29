@@ -1,4 +1,4 @@
-angular.module('starter.services', [])
+angular.module('starter.services',[])
 
 .service('userService', function() {
 
@@ -25,8 +25,16 @@ angular.module('starter.services', [])
 })
 
 
-.service('messageService', function(){
-	this.alert = function(message){
-		alert(message);
-	}
+.service('messageService', function($cordovaDialogs){
+	this.warning = function(message){
+		$cordovaDialogs.alert(message, 'Warning','Confirm')
+			.then(function(){
+//				alert('Warning closed');
+			});
+	};
+	
+	
 })
+
+
+;

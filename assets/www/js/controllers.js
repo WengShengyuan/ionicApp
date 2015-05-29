@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $http, userService, messageService) {
+.controller('AppCtrl', function($scope, $ionicModal, $http, $cordovaDialogs, userService, messageService) {
   
   // Form data for the login modal
   $scope.loginData = {
@@ -38,7 +38,7 @@ angular.module('starter.controllers', ['ngCordova'])
   
   $scope.logout = function() {
 	 userService.logout($scope); 
-	 messageService.alert('登出成功');
+	 messageService.warning('登出成功');
 	 $scope.profilemodal.hide();
   } ;
   $scope.resetLoginParam = function() {
@@ -48,12 +48,11 @@ angular.module('starter.controllers', ['ngCordova'])
   };
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
     if(userService.login($scope.loginData.username, $scope.loginData.password, $scope)){
     	$scope.$apply();
     	$scope.closeLogin();
     } else {
-    	messageService.alert('用户名或者密码错误');
+    	messageService.warning('用户名或者密码错误');
     }
   };
 })
@@ -109,7 +108,8 @@ angular.module('starter.controllers', ['ngCordova'])
 		
 		$scope.scanBarcode = function() {
 		    $cordovaBarcodeScanner.scan().then(function(imageData) {
-		        alert(imageData.text);
+//		        alert(imageData.text);
+		    	$scope.scanresult = imageData.text;
 		        console.log("Barcode Format -> " + imageData.format);
 		        console.log("Cancelled -> " + imageData.cancelled);
 		    }, function(error) {
