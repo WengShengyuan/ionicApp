@@ -1,7 +1,7 @@
 angular.module('starter.controllers', ['ngCordova'])
 
 
-.controller('AppCtrl', function($scope, $ionicModal, $http,userService, messageService) {
+.controller('AppCtrl', function($scope, $ionicModal, $http, userService , messageService) {
   
   // Form data for the login modal
   $scope.loginData = {
@@ -74,13 +74,14 @@ angular.module('starter.controllers', ['ngCordova'])
 .controller('apilistCtrl', function($scope) {
 	$scope.tests = [
 	  {title: 'camera', id:1},
-	  {title: 'barcode', id:2}
+	  {title: 'barcode', id:2},
+	  {title: 'file', id:3}
 	];
 })
 
 
 
-.controller('apiCtrl', function($scope, $stateParams, $cordovaCamera, $cordovaBarcodeScanner) {
+.controller('apiCtrl', function($scope, $stateParams, $cordovaCamera, $cordovaBarcodeScanner, $cordovaFile,messageService) {
 	//camera
 	if($stateParams.apiId == 1){
 		$scope.showCamera = true;
@@ -116,6 +117,114 @@ angular.module('starter.controllers', ['ngCordova'])
 		        console.log("An error happened -> " + error);
 		    });
 		};
+	}
+	
+	//file
+	if($stateParams.apiId == 3){
+		$scope.showFile = true;
+		$scope.apititle = "file API";
+		
+		$scope.getFreeDiskSpace = function (){
+			$cordovaFile.getFreeDiskSpace()
+				.then(function (success){
+					messageService.toast(success+'kilobytes');
+				}, function(error){
+					//error;
+				});
+		};
+		
+		$scope.createDir = function (){
+			$cordovaFile.createDir(cordova.file.externalDataDirectory,'new_dir', false)
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		$scope.removeDir = function (){
+			$cordovaFile.removeDir(cordova.file.externalDataDirectory,'new_dir')
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		$scope.removeDirRecursively = function () {
+			$cordovaFile.removeRecursively(cordova.file.externalDataDirectory,'new_dir')
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		}
+		
+		$scope.checkDir = function() {
+			$cordovaFile.checkDir(cordova.file.externalDataDirectory,'new_dir')
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		
+		$scope.createFile = function () {
+			$cordovaFile.createFile(cordova.file.externalDataDirectory,'new_dir/test.txt',false)
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		$scope.removeFile = function () {
+			$cordovaFile.removeFile(cordova.file.externalDataDirectory,'new_dir/test.txt')
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		$scope.checkFile = function() {
+			$cordovaFile.checkFile(cordova.file.externalDataDirectory,'new_dir/test.txt')
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		$scope.writeFile = function() {
+			$cordovaFile.writeFile(cordova.file.externalDataDirectory, "new_dir/test.txt", "insert txt;", true)
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		$scope.writeExistingFile = function() {
+			$cordovaFile.writeExistingFile(cordova.file.externalDataDirectory, "new_dir/test.txt", "insert txt;")
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		$scope.readFile = function() {
+			$cordovaFile.readAsText(cordova.file.externalDataDirectory, "new_dir/test.txt")
+				.then(function (success){
+					messageService.toast('success: '+success);
+				}, function (error){
+					messageService.toast('error: '+error.code);
+				});
+		};
+		
+		
 	}
 })
 

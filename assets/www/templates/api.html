@@ -21,5 +21,24 @@
   		<div>scann result : {{scanresult}}</div>
   		<button class="button button-block button-positive" ng-click="scanBarcode()">Scan</button>
   	</div>
+  	
+  	<!-- file -->
+  	<div ng-show="{{showFile}}">
+  		<button class="button  buton-positive" ng-click="getFreeDiskSpace()">getFreeDiskSpace</button>
+  		<button class="button  buton-positive" ng-click="createDir()">createDir</button>
+  		<button class="button  buton-positive" ng-click="removeDir()">removeDir</button>
+  		<button class="button  buton-positive" ng-click="checkDir()">checkDir</button>
+  		<button class="button  buton-positive" ng-click="removeDirRecursively()">removeDirRecursively</button>
+  		<hr />
+  		<hr />
+  		<button class="button  buton-positive" ng-click="createFile()">createFile</button>
+  		<button class="button  buton-positive" ng-click="checkFile()">checkFile</button>
+  		<button class="button  buton-positive" ng-click="removeFile()">removeFile</button>
+  		<hr />
+  		<hr />
+  		<button class="button  buton-positive" ng-click="writeFile()">writeFile</button>
+  		<button class="button  buton-positive" ng-click="writeExistingFile()">writeExistingFile</button>
+  		<button class="button  buton-positive" ng-click="readFile()">readFile</button>
+  	</div>
   </ion-content>
 </ion-view>

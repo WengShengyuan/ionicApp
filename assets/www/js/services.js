@@ -41,9 +41,6 @@ angular.module('starter.services',[])
 				//error
 			});
 	};
-	
-	
 })
-
 
 ;
