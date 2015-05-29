@@ -224,6 +224,20 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
+        "id": "cordova-plugin-file-transfer.FileTransferError",
+        "clobbers": [
+            "window.FileTransferError"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-transfer/www/FileTransfer.js",
+        "id": "cordova-plugin-file-transfer.FileTransfer",
+        "clobbers": [
+            "window.FileTransfer"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -237,7 +251,8 @@ module.exports.metadata =
     "com.phonegap.plugins.barcodescanner": "2.2.0",
     "cordova-plugin-dialogs": "1.1.0",
     "nl.x-services.plugins.toast": "2.0.6",
-    "cordova-plugin-file": "2.0.0"
+    "cordova-plugin-file": "2.0.0",
+    "cordova-plugin-file-transfer": "1.1.0"
 }
 // BOTTOM OF METADATA
 });

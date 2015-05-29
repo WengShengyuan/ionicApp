@@ -40,5 +40,15 @@
   		<button class="button  buton-positive" ng-click="writeExistingFile()">writeExistingFile</button>
   		<button class="button  buton-positive" ng-click="readFile()">readFile</button>
   	</div>
+  	
+  	
+  	<!-- transfer -->
+  	<div ng-show="{{showTransfer}}">
+	  	<p>total:{{total}}</p>
+	  	<p>loaded:{{loaded}}</p>
+  		<p>Progress:{{downloadProgress}}</p>
+  		<button class="button  buton-positive"  ng-click="download()">download</button>
+  	</div>
+  	
   </ion-content>
 </ion-view>
