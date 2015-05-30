@@ -8,4 +8,4 @@ An Ionic framework Demo App
 
 * MVC(or MVVM) pattern
 
-* ng-cordova supported (Camera, BarcodeScanner already build)
+* ng-cordova supported (Camera, BarcodeScanner, file, dialogs, file transfer already build)
